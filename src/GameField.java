@@ -72,9 +72,10 @@ public class GameField extends JPanel implements ActionListener{
             g.setColor(Color.white);
             // g.setFont(f);
             g.drawString(str,125,SIZE/2);
+
         }
     }
-
+//движение змейки
     public void move(){
         for (int i = dots; i > 0; i--) {
             x[i] = x[i-1];
@@ -91,7 +92,7 @@ public class GameField extends JPanel implements ActionListener{
             y[0] += DOT_SIZE;
         }
     }
-
+//условие для пересоздания яблока
     public void checkApple(){
         if(x[0] == appleX && y[0] == appleY){
             dots++;
@@ -131,6 +132,8 @@ public class GameField extends JPanel implements ActionListener{
         repaint();
     }
 
+
+    // класс для считывания клавиш
     class FieldKeyListener extends KeyAdapter{
         @Override
         public void keyPressed(KeyEvent e) {
@@ -156,6 +159,9 @@ public class GameField extends JPanel implements ActionListener{
                 right = false;
                 down = true;
                 left = false;
+            }
+            if(key == KeyEvent.VK_ENTER){
+                inGame = true;
             }
         }
     }
